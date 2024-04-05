@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
 
 :root {
   /* COLOURS */
   --portal-blue-1: #ECF8FC;
   --portal-blue-2: #CCF0FC;
   --portal-blue-3: #99E1FA;
+  --portal-blue-4: #33C3F5;
   --portal-blue-5: #00A9E4;
   --portal-blue-6: #0087B5;
   --portal-blue-7: #136682;
+  --portal-blue-8: #002D3D;
 
   --portal-grey-1: #F8F9FA;
+  --portal-grey-2: #F1F3F4;
   --portal-grey-3: #E8EAED;
   --portal-grey-4: #BDC1C6;
   --portal-grey-5: #80868B;
@@ -68,6 +71,7 @@
 
   /* SHADOWS */
   --portal-shadow-md: 0 2px 4px 0px rgba(0, 0, 0, 0.16);
+  
   /* Colors used in the 'loading-metrics.html' template, on Metrics page */
   --m-chart-bkg: var(--portal-col-bkg-lighter);
   --m-chart-lines: var(--portal-col-bkg-active);
@@ -75,11 +79,15 @@
 
   /* FONTS */
   --portal-body-font: Barlow;
-  --portal-attribution-font: Roboto;
+  --portal-attribution-font: Barlow;
+  --portal-weight-regular: 400;
+  --portal-weight-medium: 500;
+  --portal-weight-semibold: 600;
+  --portal-weight-bold: 700;
 }
 
 body {
-  font-family: var(--portal-body-font) !important;
+  font-family: var(--portal-body-font);
 }
 
 .subtle {
@@ -87,8 +95,8 @@ body {
 }
 
 .portal-view, .Portal #Content, .PortalView #Content {
-  color: var(--portal-col-text);
-  background-color: var(--portal-col-bkg-lighter);
+  color: var(--portal-grey-7);
+  background-color: var(--portal-blue-7);
 }
 
 body, #portal-sections {
@@ -117,8 +125,13 @@ body, #portal-sections {
 }
 
 .Portal.Editor #Navbar, .PortalView #Navbar, .Portal.Editor .navbar-inner, .PortalView .navbar-inner, .Portal .d1_nav, .PortalView .d1_nav {
-  color: var(--portal-col-text);
-  background-color: var(--portal-col-bkg-active);
+  color: var(--portal-grey-5);
+  background-color: var(--portal-grey-1);
+  padding: 0;
+}
+
+#Navbar header {
+    display: none;
 }
 
 .navbar-inner .nav>li>a, #nav-trigger, .header .nav li a, .Portal.Editor #Navbar .brand::before, .PortalView #Navbar .brand::before {

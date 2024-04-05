@@ -235,6 +235,12 @@ define([
         view.scene = view.widget.scene;
         view.camera = view.widget.camera;
 
+        // Remove the default blue background from the Cesium widget
+        // To do: Make this configurable
+        const widgetBackgroundDark = new Cesium.Color(0, .175, .238, 1);
+        const widgetBackgroundLight = new Cesium.Color(.941, .949, .953, 1);
+        view.scene.globe.baseColor = widgetBackgroundLight;
+
         return view.widget;
       },
 

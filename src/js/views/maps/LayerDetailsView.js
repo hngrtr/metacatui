@@ -143,7 +143,7 @@ define(
             label: 'Info & Data',
             view: LayerInfoView,
             collapsible: true,
-            showTitle: true,
+            showTitle: false,
             hideIfError: false
           }
         ],

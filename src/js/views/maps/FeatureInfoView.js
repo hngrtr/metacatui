@@ -211,7 +211,6 @@ define(
                 body {
                   background-color: transparent;
                   color: var(--map-col-text-body, var(--map-col-text__deprecate));
-                  font-family: "Helvetica Nueue", "Helvetica", "Arial", "Lato", "sans serif";
                   margin: 0;
                   box-sizing: border-box;
                 }
@@ -278,8 +277,8 @@ define(
 
             // Update the iFrame content
             this.getContent().then(function (html) {
+              iFrame.style.opacity = 0;
               iFrameDiv.innerHTML = html;
-              view.updateIFrameHeight();
               // Not the ideal solution, but check the height of the iFrame
               // again after some time to allow external content to load. This
               // is necessary for content that loads asynchronously, like
@@ -287,7 +286,7 @@ define(
               // may be from a different domain.
               setTimeout(function () {
                 view.updateIFrameHeight();
-              }, 850);
+              }, 500);
             })
 
             // Show or hide the layer details button, update the text
@@ -318,15 +317,8 @@ define(
          */
         updateIFrameHeight: function (height, limit = true) {
           const iFrame = this.elements?.iFrame;
-          if (!iFrame) return;
-          if ((!height && height !== 0) || height < 0) {
-            height = iFrame.contentWindow.document.body.scrollHeight + 5;
-          }
-          if (limit) {
-            const maxHeight = window.innerHeight - 275;
-            height = height > maxHeight ? maxHeight : height;
-          }
-          iFrame.style.height = height + "px";
+          iFrame.style.height = ((iFrame.contentWindow.document.getElementById("content").scrollHeight / 16) + 1.5) + "rem";
+          iFrame.style.opacity = 1;
         },
 
         /**
@@ -560,8 +552,8 @@ define(
                 this.close()
               }
             } else {
-              this.open()
               this.updateContent()
+              this.open()
             }
           }
           catch (error) {

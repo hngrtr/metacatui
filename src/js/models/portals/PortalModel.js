@@ -737,6 +737,7 @@ define(["jquery",
 
                 });
 
+                modelJSON.theme = "light";
                 return modelJSON;
             },
 

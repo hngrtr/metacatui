@@ -68,7 +68,7 @@
   --map-col-text-on-green: white;
   --map-col-blue: #057fc6;
   --map-col-text-on-blue: white;
-  --map-col-yellow: #f8b406;
+  --map-col-yellow: #fda;
   --map-col-text-on-yellow: #1b2538;
 
   --map-col-tooltip-background: var(--portal-col-tooltip-background);
@@ -82,11 +82,11 @@
   --map-col-buttons-emphasis__deprecate: var(--portal-secondary-color, var(--map-col-green));
   --map-col-highlight__deprecate: var(--portal-primary-color, var(--map-col-blue));
   /* SIZING: */
-  --map-size-toolbar-link: 2.2rem;
+  --map-size-toolbar-link: 2.5rem;
   --map-size-toolbar-link-margin: 0.4rem;
-  --map-size-toolbar-inter-link-margin: 0.5rem;
+  --map-size-toolbar-inter-link-margin: 1rem;
   --map-border-radius: 0.5rem;
-  --map-width-toolbar: 21rem;
+  --map-width-toolbar: 30rem;
   --map-toolbar-link-width: calc(var(--map-size-toolbar-link) + var(--map-size-toolbar-link-margin) + var(--map-size-toolbar-link-margin));
   /* SHADOWS */
   --map-shadow-md: var(--portal-shadow-md, 0 1px 9px -1px rgba(0, 0, 0, 0.2), 0 1px 2px 0px rgba(0, 0, 0, 0.5));
@@ -163,7 +163,6 @@
 .map-view__button--emphasis {
   background-color: var(--map-col-buttons-bkg, var(--map-col-buttons-emphasis__deprecate));
   padding: 0.5rem 0.55rem;
-  font-weight: 900;
   font-size: 1rem;
   border: 1px solid var(--map-col-border);
 }
@@ -176,44 +175,49 @@
 /* ---- BADGE ---- */
 
 .map-view__badge {
-  padding: 0.4em 0.5em 0.3em 0.55em;
-  margin: 0 -0.2rem 0 0.3rem;
-  font-size: 0.62rem;
+  padding: 0.2rem 0.4rem;
+  margin: 0 0.25rem;
+  font-size: 0.66rem;
   background-color: var(--map-col-content-bkg-muted, var(--map-col-bkg-lighter__deprecate));
   color: var(--map-col-text-muted, var(--map-col-text__deprecate));
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  filter: var(--map-no-brightness-or-opacity-tweaks, brightness(1.3));
-  border-radius: var(--map-border-radius);
-  line-height: 100%;
+  border-radius: .25rem;
+  line-height: 1;
   font-weight: 500;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .map-view__badge--blue {
   background-color: var(--map-col-blue);
   color: var(--map-col-text-on-blue);
-  filter: none;
 }
 
 .map-view__badge--green {
   background-color: var(--map-col-green);
   color: var(--map-col-text-on-green);
-  filter: none;
 }
 
 .map-view__badge--yellow {
   background-color: var(--map-col-yellow);
   color: var(--map-col-text-on-yellow, var(--map-col-bkg-lighter__deprecate));
-  filter: none;
-  font-weight: 600;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.9);
 }
 
 .map-view__badge--contrast {
   background-color: var(--map-col-text-label, var(--map-col-text__deprecate));
   color: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.8);
-  font-weight: 600;
+}
+
+/******
+ANIMATION
+******/
+
+@keyframes fadeIn { 
+  from { 
+    opacity: 0;
+  } 
+  to { 
+    opacity: 1;
+  } 
 }
 
 
@@ -228,7 +232,7 @@
 /* The outer-most container for the 3D/2D Map View */
 
 .map-view {
-  --headerHeight: 80px;
+  --headerHeight: 5rem;
   position: relative;
   height: 100%;
   min-height: 100%;
@@ -260,10 +264,12 @@
 /* So the map widget is underneath the links/tabs on larger screens (the toolbar should 'squish' the map, not overlap it) */
 @media only screen and (min-width: 768px) {
   .map-view__map-widget-container {
+    /*
     order: 1;
     position: relative;
     width: calc(100% + var(--map-toolbar-link-width) + (2* var(--map-size-toolbar-inter-link-margin)));
     margin-left: calc(-1 * var(--map-toolbar-link-width) - (2* var(--map-size-toolbar-inter-link-margin)));
+    */
   }
 }
 
@@ -276,18 +282,20 @@
 }
 
 .map-view__toolbar-container {
+  gap: 1rem;
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  min-height: 100%;
+  top: 1rem;
+  left: 1rem;
+  max-height: calc(100% - 2rem);
   width: min-content;
   /* required to be placed above map widget in firefox: */
   z-index: 1;
   pointer-events: none;
+  padding-bottom: .5rem;
+  border-radius: var(--map-border-radius);
 }
 
-/* On large screens, the toolbar should not overlap the map, it should squish it */
+/* On large screens, the toolbar should not overlap the map, it should squish it
 @media only screen and (min-width: 768px) {
   .map-view__toolbar-container {
     order: 0;
@@ -296,14 +304,14 @@
     flex-grow: 1;
   }
 }
+*/
 
 .map-view__feature-info-container {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  /* Make sure the entire panel is visible always. Leave 5rem for scale bar. */
-  max-height: calc(100% - 5rem);
-  overflow: auto;
+  right: 1rem;
+  bottom: 1rem;
+  min-height: 10rem;
+  overflow: hidden;
   /* required to be placed above map widget in firefox: */
   z-index: 1;
 
@@ -314,11 +322,10 @@
 
 .map-view__layer-details-container {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: calc(var(--map-width-toolbar) + 2rem);
+  top: 1rem;
   /* Don't allow the panel to expand beyond the map view */
   max-height: 100%;
-  overflow: auto;
   /* required to be placed above map widget in firefox: */
   z-index: 1;
 }
@@ -353,17 +360,13 @@
  */
 
 .scale-bar {
-  width: max-content;
-  min-width: 12rem;
-  min-height: 2rem;
+  box-shadow: var(--map-shadow-md);
   background: var(--map-col-content-bkg-muted, var(--map-col-bkg__deprecate));
-  border-radius: var(--map-border-radius);
+  border-radius: .25rem;
   color: var(--map-col-text-muted, var(--map-col-text__deprecate));
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.7);
   font-size: 0.8rem;
-  padding: 0.18rem 0.8rem;
+  padding: 0.25rem 1rem;
   display: grid;
-  grid-template-rows: 100%;
   grid-template-columns: auto auto;
   gap: 1rem;
   align-items: center;
@@ -372,24 +375,23 @@
 /* __coordinates contains __longitude, __latitude, and __elevation */
 
 .scale-bar__coordinates {
-  display: grid;
-  grid-template-rows: 100%;
-  grid-template-columns: auto auto auto;
-  gap: 0.5rem;
-  align-items: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 50% 50% auto; /* The last is auto because PDG doesn't use elevation */
+    gap: 0;
+    width: 11rem;
 }
 
 /* The elements that contain the current coordinates */
 
 .scale-bar__label {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 /* The __scale element contains __bar and __distance */
 
 .scale-bar__scale {
   display: grid;
-  grid-template-rows: 100%;
   grid-template-columns: auto auto;
   gap: 0.5rem;
   align-items: center;
@@ -399,9 +401,8 @@
 represents 1 unit of the given distance measurement. */
 
 .scale-bar__bar {
-  height: 4px;
-  border-radius: 1px;
-  transition: width 0.3s;
+  height: .25rem;
+  transition: width 0.3s ease-in-out;
   background-color: var(--map-col-buttons-icon-muted, var(--map-col-text__deprecate));
 }
 
@@ -420,24 +421,26 @@ represents 1 unit of the given distance measurement. */
 .toolbar {
   display: grid;
   grid-auto-flow: column;
-  color: var(--map-col-content-bkg, var(--map-col-text__deprecate));
+  color: var(--map-col-content-bkg);
 }
 
 .toolbar__links {
   display: flex;
   flex-direction: column;
   height: min-content;
-  background-color: var(--map-col-content-bkg-highlight, var(--map-col-bkg__deprecate));
+  background-color: var(--map-col-content-bkg-highlight);
   border-radius: var(--map-border-radius);
-  margin: var(--map-size-toolbar-inter-link-margin);
+  padding: .5rem;
+  row-gap: .5rem;
   pointer-events: all;
   color: var(--map-col-buttons-bkg-highlight);
   box-shadow: var(--map-shadow-md);
 }
 
 .toolbar__all-content {
-  background-color: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
+  background-color: var(--map-col-content-bkg);
   width: var(--map-width-toolbar);
+  border-radius: var(--map-border-radius);
   box-shadow: var(--map-shadow-md);
   flex-direction: column;
   /* Don't display the content unless the toolbar is open. The outermost element, with
@@ -454,21 +457,19 @@ represents 1 unit of the given distance measurement. */
 
 .toolbar__content {
   /* TODO: remove temp styles */
-  height: 100%;
+  padding-bottom: .5rem;
   width: 100%;
   justify-content: center;
   /* hide unless the content section is active */
   display: none;
-  overflow: auto;
-
+}
   /* TODO: yvonne - Temporary. I'll clean this up in a separate PR. */
-  .toolbar__content-header {
-    color: var(--map-col-text-title);
-    font-size: 24px;
+.toolbar__content-header {
+    color: var(--map-col-text-title) !important;
+    font-size: 1.5rem;
     font-weight: 700;
-    line-height: 32px;
-    margin: 16px 24px;
-  }
+    line-height: 2rem;
+    margin: 1rem 1.5rem;
 }
 
 .toolbar__content--active {
@@ -476,57 +477,70 @@ represents 1 unit of the given distance measurement. */
 }
 
 .toolbar__link {
-  position: relative;
+  /*
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  */
   cursor: pointer;
   height: var(--map-size-toolbar-link);
   width: var(--map-size-toolbar-link);
-  background-color: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
-  border-radius: var(--map-border-radius);
-  padding: 0.2rem;
-  margin: var(--map-size-toolbar-link-margin);
+  background-color: var(--map-col-content-bkg);
+  border-radius: .25rem;
+  padding: 0.5rem;
+  position: relative;
   border: 1px solid var(--map-col-border);
 }
 
 .toolbar__link:hover {
-  background-color: var(--map-col-buttons-bkg-hover, var(--map-col-bkg-lighter__deprecate));
+  background-color: var(--map-col-buttons-bkg-hover);
 }
 
 .toolbar__link--active {
-  background-color: var(--map-col-buttons-bkg-highlight, var(--map-col-highlight__deprecate));
+  background-color: var(--map-col-buttons-bkg-highlight);
   color: var(--map-col-buttons-icon-highlight);
 }
 
 .toolbar__link--active:hover {
-  background-color: var(--map-col-buttons-bkg-highlight, var(--map-col-highlight__deprecate));
+  background-color: var(--map-col-buttons-bkg-highlight);
 }
 
 .toolbar__link-title {
   position: absolute;
-  left: calc(100% + 1rem);
-  color: var(--map-col-tooltip-text, var(--map-col-text__deprecate));
-  margin-top: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  font-weight: 600;
+  left: calc(100% + .5rem);
+  top: .25rem;
+  color: var(--map-col-tooltip-text);
+  font-size: 0.75rem;
+  font-weight: 700;
   /* don't show the link title until the link is hovered */
   display: none;
 }
 
+.toolbar__link-title:before {
+    content: '';
+    position: absolute;
+    width: .5rem;
+    height: .5rem;
+    left: -.5rem;
+    top: 50%;
+    transform: translate(50%,-50%) rotate(-45deg);
+    background-color: var(--map-col-tooltip-background);
+}
+
 .toolbar__link:hover .toolbar__link-title {
   display: block;
-  border-radius: var(--map-border-radius);
-  background-color: var(---map-col-tooltip-background, var(--map-col-bkg__deprecate));
-  padding: 0.2rem 0.6rem
+  border-radius: .25rem;
+  background-color: var(--map-col-tooltip-background);
+  padding: 0.25rem 0.5rem
 }
 
 .toolbar__link-icon {
-  font-size: 1.4rem;
-  line-height: 100%;
+  display: block;
+  font-size: 1.5rem;
+  height: 1.5rem;
+  line-height: 1;
+  width: 1.5rem;
 }
 
 /*****************************************************************************************
@@ -538,100 +552,99 @@ represents 1 unit of the given distance measurement. */
  */
 
 
-.search-input {
-  padding-bottom: 16px;
-
-  .search-input__field {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 40px;
-    margin-bottom: 8px;
-    border: 1px solid;
-    border-color: var(--map-col-border-muted);
-    border-radius: 4px;
+ .search-input {
+    padding-bottom: 16px;
   
-    .search-input__input {
-      width: 100%;
+    .search-input__field {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 8px;
+      border: 1px solid;
+      border-color: var(--map-col-border-muted);
+      border-radius: 4px;
     
-      input[type=text]& {  /* Override bootstrap */
-        height: 100%;
-        margin: unset;
-        padding-left: 16px;
-        background-color: var(--map-col-content-bkg, var(--map-col-bkg));
-        color: var(--map-col-text-body, var(--map-col-text));
-        font-family: var(--map-body-font);
-        border: none;
-        box-shadow: unset;
-
-        ::placeholder {
-          color: var(--map-col-text-muted);
+      .search-input__input {
+        width: 100%;
+      
+        input[type=text]& {  /* Override bootstrap */
+          height: 100%;
+          margin: unset;
+          padding-left: 16px;
+          background-color: var(--map-col-content-bkg, var(--map-col-bkg));
+          color: var(--map-col-text-body, var(--map-col-text));
+          font-family: var(--map-body-font);
+          border: none;
+          box-shadow: unset;
+  
+          ::placeholder {
+            color: var(--map-col-text-muted);
+          }
         }
       }
-    }
-
-    &:focus-within {
-      border-color: var(--map-col-border-highlight-search-box, var(--map-col-blue));
-    }
-
-    &.search-input__error-input,
-    &.search-input__error-input input[type=text].search-input__input {
-      border-color: var(--map-col-input-error-border);
-      background-color: var(--map-col-input-error-bkg);
-    }
   
-    .search-input__cancel-button-container {
-      align-items: center;
-      display: flex;
-    }
-
-    .search-input__search-button,
-    .search-input__cancel-button {
-      background-color: transparent;
-      border: none;
-      color: unset;
-      width: 32px;
-      height: 32px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      flex-shrink: 0;
-      margin: 4px;
+      &:focus-within {
+        border-color: var(--map-col-border-highlight-search-box, var(--map-col-blue));
+      }
   
-      .search-input__button-icon {
-        font-size: 16px;
+      &.search-input__error-input,
+      &.search-input__error-input input[type=text].search-input__input {
+        border-color: var(--map-col-input-error-border);
+        background-color: var(--map-col-input-error-bkg);
+      }
+    
+      .search-input__cancel-button-container {
+        align-items: center;
+        display: flex;
+      }
+  
+      .search-input__search-button,
+      .search-input__cancel-button {
+        background-color: transparent;
+        border: none;
+        color: unset;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        flex-shrink: 0;
+        margin: 4px;
+    
+        .search-input__button-icon {
+          font-size: 16px;
+        }
+      }
+  
+      .search-input__vertical-divider {
+        width: 0;
+        height:24px;
+        border-right: solid 2px var(--map-col-border-muted);
+      }
+  
+      .search-input__search-button {
+        color: var(--map-col-buttons-icon-muted);
+        border-radius: 4px;
+  
+        &.search-input__search-button--active {
+          color: var(--map-col-text-highlight, var(--map-col-text-body));
+          background: var(--map-col-content-bkg-highlight, var(--map-col-bkg-lighter__deprecate));
+        }
+      }
+      .search-input__cancel-button {
+        color: var(--map-col-utility-buttons);
+        margin-left: 0;
+        width: 24px;
       }
     }
-
-    .search-input__vertical-divider {
-      width: 0;
-      height:24px;
-      border-right: solid 2px var(--map-col-border-muted);
-    }
-
-    .search-input__search-button {
-      color: var(--map-col-buttons-icon-muted);
-      border-radius: 4px;
-
-      &.search-input__search-button--active {
-        color: var(--map-col-text-highlight, var(--map-col-text-body));
-        background: var(--map-col-content-bkg-highlight, var(--map-col-bkg-lighter__deprecate));
-      }
-    }
-    .search-input__cancel-button {
-      color: var(--map-col-utility-buttons);
-      margin-left: 0;
-      width: 24px;
+  
+    .search-input__error-text {
+      line-height: 16px;
+      color: var(--map-col-input-error-text);
     }
   }
-
-  .search-input__error-text {
-    line-height: 16px;
-    color: var(--map-col-input-error-text);
-  }
-}
 
 /*****************************************************************************************
  *
@@ -674,17 +687,17 @@ represents 1 unit of the given distance measurement. */
   display: grid;
   grid-template-columns: min-content auto max-content;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 1.5rem;
   cursor: pointer;
-
+  
   .layer-item__visibility-toggle {
     opacity: var(--map-no-brightness-or-opacity-tweaks, 0.85);
     padding: 0;
-    margin: 4px;
+    margin: .25rem;
     border: 0;
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -692,19 +705,22 @@ represents 1 unit of the given distance measurement. */
     background-color: transparent;
 
     .layer-item__icon {
-      fill: var(--map-col-buttons-icon-muted, currentColor);
+      
+        fill: var(--map-col-buttons-icon-muted, currentColor);
+        height: 1rem;
+        width: auto;
+        opacity: var(--map-no-brightness-or-opacity-tweaks, 0.8);
+
       svg>path {
         fill: var(--map-col-buttons-icon-muted, currentColor);
       }
 
-      height: 16px;
-      width: auto;
-      opacity: var(--map-no-brightness-or-opacity-tweaks, 0.8);
     }
   }
 
   &:hover {
     background-color: var(--map-col-content-bkg-muted, #323745);
+    transition: background-color .3s ease-in-out;
 
     &.layer-item--shown {
       background-color: var(--map-col-content-bkg-highlight, #15324e);
@@ -728,6 +744,7 @@ represents 1 unit of the given distance measurement. */
 
       .layer-item__icon {
         fill: var(--map-col-buttons-bkg-highlight, var(--map-col-highlight__deprecate));
+        
         svg>path {
           fill: var(--map-col-buttons-bkg-highlight, var(--map-col-highlight__deprecate));
         }
@@ -750,21 +767,23 @@ represents 1 unit of the given distance measurement. */
     /* By default, don't show button. */
     display: none;
     align-items: center;
-    border-radius: 4px;
+    border-radius: .25rem;
 
     .layer-item__settings-toggle {
-      font-size: 16px;
-      width: 32px;
-      height: 32px;
+      font-size: .85rem;
+      width: 1rem;
+      height: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: .5rem;
       color: var(--map-col-utility-buttons, currentColor);
     }
 
     .layer-item__legend-container {
       /* By default, don't show legend. */
       display: none;
+      margin-left: -.5rem;
     }
 
     /* Use the same style on button hover and when selected. */
@@ -781,13 +800,18 @@ represents 1 unit of the given distance measurement. */
 }
 
 .layer-item__label {
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0 8px;
+  font-size: .825rem;
+  font-weight: 400;
+  margin: 0 .5rem;
   color: var(--map-col-text-label);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.layer-item__label-text {
+    text-transform: capitalize;
 }
 
 .layer-item__highlighted-text {
@@ -812,7 +836,10 @@ represents 1 unit of the given distance measurement. */
  */
 
 .layer-category-list {
-  width: 100%;
+  border: 1px solid var(--portal-grey-3);
+  border-width: 1px 0;
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
 
   .layer-category-item {
     box-shadow: 0 1px #f1f3f4 inset;
@@ -826,7 +853,8 @@ represents 1 unit of the given distance measurement. */
       padding: 0 24px;
 
       &:hover {
-        background-color: var(--map-col-content-bkg-highlight, #15324e);
+        background-color: var(--map-col-content-bkg-highlight);
+        transition: background-color .3s ease-in-out;
       }
     }
   }
@@ -860,6 +888,18 @@ represents 1 unit of the given distance measurement. */
   color: var(--map-col-utility-buttons);
 }
 
+.layer-category-item__layers {
+  display: none;
+  opacity: 0;
+  animation: fadeIn .3s ease-in-out;
+}
+
+.layer-category-item__layers.open {
+  display: block;
+  opacity: 1;
+}
+
+
 /*****************************************************************************************
  *
  * Layer Details
@@ -869,92 +909,81 @@ represents 1 unit of the given distance measurement. */
  */
 
 .layer-details {
-  width: var(--map-width-toolbar);
-  border-top-right-radius: var(--map-border-radius);
-  border-top-left-radius: var(--map-border-radius);
-  padding: 0.4rem 0.8rem;
-  background-color: var(--map-col-content-bkg, var(--map-col-bkg-lighter__deprecate));
-  color: var(--map-col-text-body, var(--map-col-text__deprecate));
+  width: calc(var(--map-width-toolbar) * 1.5);
+  background: var(--portal-blue-1);
+  border-radius: var(--map-border-radius);
+  color: var(--map-col-text-body);
   box-shadow: var(--map-shadow-md);
   grid-template-columns: auto min-content;
   grid-template-rows: min-content auto;
-  row-gap: 1rem;
   column-gap: 0.5rem;
   align-items: center;
   /* Don't show the details panel unless it also has the layer-details--open class */
   display: none;
-  border: 1px solid var(--map-col-border);
+  opacity: 0;
+  animation: fadeIn .3s ease-in-out;
 }
 
 .layer-details--open {
   display: grid;
+  opacity: 1;
 }
 
 .layer-details__label {
   /* the important is needed to overwrite more specific styles set on portal title tags */
-  color: var(--map-col-text-highlight, var(--map-col-text__deprecate)) !important;
+  color: var(--map-col-text-highlight) !important;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-align: center;
-  width: 100%;
-  font-weight: 500;
-  font-size: 0.85rem;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 60%);
+  font-size: 1.33rem;
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 1rem 1.5rem;
+  text-transform: capitalize;
 }
 
 .layer-details__toggle {
-  padding: 0.4rem;
-  font-size: 1.3rem;
-  background-color: transparent;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.6);
-  color: var(--map-col-utility-buttons);
+    color: var(--map-col-utility-buttons);
+    font-size: 1rem;
+    height: 2rem;
+    margin-right: 1rem;
+    width: 2rem;
 }
 
 /* The notification div holds a badge & message, if one is set */
 .layer-details__notification {
-  margin: -0.2rem 0 0.9rem 0;
-  padding: 0.3rem 0.5rem;
-  background-color: var(--map-col-buttons-bkg, var(--map-col-buttons__deprecate));
-  border-radius: var(--map-border-radius);
-  border: 1px solid var(--map-col-border);
+  margin: .5rem 0 1rem;
+  padding: 0.75rem;
+  border-radius: .25rem;
 }
 
 .layer-details__notification--blue {
   background-color: var(--map-col-blue);
   color: var(--map-col-text-on-blue);
-  filter: none;
-  border-color: none;
 }
 
 .layer-details__notification--green {
   background-color: var(--map-col-green);
   color: var(--map-col-text-on-green);
-  filter: none;
-  border-color: none;
 }
 
 .layer-details__notification--yellow {
   background-color: var(--map-col-yellow);
   color: var(--map-col-text-on-yellow, var(--map-col-bkg-lighter__deprecate));
-  filter: none;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.9);
-  border-color: none;
 }
 
 .layer-details__notification--contrast {
   background-color: var(--map-col-text-body, var(--map-col-text__deprecate));
   color: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.95);
-  border-color: none;
 }
 
 .layer-details__sections {
+  background: white;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 100%;
   gap: 0.5rem;
   grid-column: 1 / 3;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0 var(--map-border-radius) var(--map-border-radius);
 }
 
 .layer-detail {
@@ -966,13 +995,10 @@ represents 1 unit of the given distance measurement. */
 
 .layer-detail__label {
   /* the important is needed to overwrite more specific styles set on portal title tags */
-  color: var(--map-col-text-body, var(--map-col-text__deprecate)) !important;
+  color: var(--map-col-text-body) !important;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  width: 100%;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 1rem;
   line-height: 1;
 }
 
@@ -981,8 +1007,7 @@ represents 1 unit of the given distance measurement. */
   /* Do not display this contents of this detail section unless the open class is added */
   display: none;
   align-items: center;
-  justify-content: center;
-  margin: 1rem 0;
+  margin: .75rem 0;
 }
 
 .layer-detail--open .layer-detail__content {
@@ -991,30 +1016,11 @@ represents 1 unit of the given distance measurement. */
 
 .layer-detail--no-header .layer-detail__content {
   margin-top: 0;
-  justify-self: center;
+  justify-self: left;
 }
 
 .layer-detail__toggle {
-  --toggle-size: 1.7rem;
-  display: block;
-  width: var(--toggle-size);
-  height: var(--toggle-size);
-  /* background: none; */
-}
-
-.layer-detail__toggle:before {
-  /* use the font awesome chevron icon */
-  display: block;
-  font-family: FontAwesome;
-  content: "\f078";
-  transform: rotate(0deg);
-  transition-duration: 0.5s;
-  transition-property: transform;
-  font-size: 0.8rem;
-}
-
-.layer-detail--open .layer-detail__toggle:before {
-  transform: rotate(180deg);
+  display: none;
 }
 
 .layer-info {
@@ -1025,39 +1031,40 @@ represents 1 unit of the given distance measurement. */
 }
 
 .layer-info__description {
-  font-size: 0.91rem;
-  line-height: 1.33;
+  font-size: 1rem;
+  line-height: 1.5;
   max-height: 22rem;
   overflow: auto;
 }
 
 .layer-info__attribution {
-  font-size: 0.8rem;
-  line-height: 1.3;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.8);
+  font-size: 0.75rem;
+  line-height: 1.5;
   color: var(--map-col-text-muted);
-  font-family: var(--map-attribution-font);
 }
 
 .layer-info__links {
+  /*
   display: grid;
   grid-auto-flow: column;
   gap: 2rem;
   width: 100%;
+  */
 }
 
 .layer-info__link {
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  font-size: 0.9rem;
-  justify-self: center;
+  border: 1px solid var(--map-col-border);
+  border-radius: .25rem;
+  font-size: 1rem;
+  margin-right: .5rem;
+  padding: .5rem 1rem;
 }
 
 .layer-opacity {
-  min-height: 3rem;
+  height: 2rem;
   display: grid;
   align-content: center;
-  width: 90%;
+  width: 50%;
 }
 
 .layer-opacity__slider {
@@ -1123,59 +1130,79 @@ other class: .ui-slider-range */
  */
 
 .feature-info {
-  width: var(--map-width-toolbar);
-  border-top-right-radius: var(--map-border-radius);
-  border-top-left-radius: var(--map-border-radius);
-  padding: 1rem 0.8rem 1rem 0.8rem;
-  row-gap: 0.8rem;
-  background-color: var(--map-col-content-bkg, var(--map-col-bkg-lighter__deprecate));
-  color: var(--map-col-text-body, var(--map-col-text__deprecate));
-  box-shadow: var(--map-shadow-md);
-  grid-template-columns: auto 2.5rem;
-  grid-template-rows: min-content auto min-content;
-  justify-items: center;
+  width: calc(var(--map-width-toolbar) * 1.25);
+  border-radius: var(--map-border-radius);
+  box-shadow: var(--portal-shadow-md);
+  padding: 1.5rem 1.5rem 0;
+  background-color: var(--portal-blue-1);
+  color: var(--map-col-text-body);
   /* Don't show the details panel unless it also has the feature-info--open class */
   display: none;
-}
+  opacity: 0;
+  animation: fadeIn .3s ease-in-out;
+  }
 
 .feature-info--open {
-  display: grid;
+  display: block;
+  opacity: 1;
 }
 
 .feature-info__label {
-  color: var(--map-col-text-title, var(--map-col-text__deprecate)) !important;
+  border-bottom: 1px solid var(--portal-blue-2);
+  color: var(--portal-blue-7) !important;
+  font-weight: 600;
+  font-size: 1.33rem;
+  line-height: 1.5rem;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-align: center;
-  width: 100%;
-  font-weight: 500;
-  font-size: 0.85rem;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 60%);
+  padding: 0 3rem 1rem 0;
+  position: relative;
 }
 
-.feature-info__content {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 100%;
-  gap: 1rem;
-  grid-column: 1 / 3;
-  padding-bottom: 0.5rem;
-  overflow: scroll;
+.feature-info__label::after {
+  background: linear-gradient(0deg, transparent, var(--portal-blue-1) 60%);
+  bottom: calc(-1rem - 1px);
+  content: '';
+  height: 1rem;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 120;
 }
+
+.feature-info::after {
+  background: linear-gradient(0deg, var(--portal-blue-1) 60%, transparent);
+  bottom: 0rem;
+  content: '';
+  height: 1.5rem;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+
+.portal-viz-section-view iframe {
+    overflow-y: scroll;
+    width: 100%;
+    transition: height .5s ease-in-out;
+ }
 
 .feature-info__toggle {
-  padding: 0.4rem 0.6rem 0.4rem;
-  font-size: 1.25rem;
-  background-color: transparent;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.6);
-  justify-self: end;
+    color: var(--map-col-utility-buttons);
+    font-size: 1rem;
+    height: 2rem;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.25rem;
+    width: 2rem;
 }
 
 .feature-info__buttons {
-  grid-column: 1 / 3;
+  display: none;
+  /*
   display: grid;
   gap: 0.5rem;
+  grid-template-columns: 50% 50%;
+  */
 }
 
 /* styles for the (default) table template */
@@ -1208,42 +1235,48 @@ other class: .ui-slider-range */
 
 /* styles for the story template */
 
-.feature-info__thumbnail {
-  min-width: 6rem;
-  min-height: 6rem;
-  max-width: 50%;
-  float: right;
-  margin: 0.3rem;
-  border-radius: var(--map-border-radius);
-  box-shadow: var(--map-shadow-md);
+#content {
+  padding: 1rem 0 0;
+  margin: 0;
+}
 
+.feature-info__thumbnail {
+  border-radius: var(--map-border-radius);
+  float: left;
+  margin: 0 1rem 0 0;
+  width: 7.5rem;
 }
 
 .feature-info__subtitle {
-  font-size: 0.9em;
-  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: 500;
   display: block;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.85);
-  margin: 0;
+  margin: 0 0 .5rem;
   padding: 0;
-  color: var(--map-col-text-muted);
+  color: var(--portal-grey-5);
 }
 
 .feature-info__description {
-  margin: 0.55rem 0;
-  font-size: 0.9rem;
+  margin: 0 0 1.5rem;
   line-height: 1.4rem;
 }
 
 .feature-info__link {
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  text-decoration: none;
+  background: white;
+  border: 1px solid var(--map-col-border);
+  border-radius: .25rem;
   color: var(--map-col-buttons-text, var(--portal-col-highlight));
+  display: inline-block;
+  padding: .5rem 1rem;
+  text-decoration: none;
 }
+
+.feature-info__link svg {
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+
+
 
 
 /*****************************************************************************************
@@ -1255,25 +1288,29 @@ other class: .ui-slider-range */
  */
 
 .map-legend--preview {
-  height: 24px;
+  border-radius: .25rem;
+  height: 1.5rem;
   width: 100%;
-  margin: 4px;
+  margin: .25rem;
 }
 
 .map-legend__svg--preview {
-  height: 100%;
-  width: auto;
+    /* get rid of those intense drop shadows */
+    filter: none !important;
+    height: 1.5rem;
+    width: auto;
 }
 
+.map-legend__svg--preview * {
+    /* get rid of those intense drop shadows */
+    filter: none !important;
+}
+    
 .map-legend__img--preview {
   /* allow images previews to bleed into the padding a little, so that more detail is visible */
   height: 100%;
-  max-width: 100%;
+  width: 2rem;
   margin-top: calc(-0.5* var(--img-overflow));
-  border-radius: 3px;
-  box-shadow: var(--map-shadow-md);
-  /* imagery appears lighter on the map */
-  filter: var(--map-no-brightness-or-opacity-tweaks, brightness(1.75));
 }
 
 /*****************************************************************************************
@@ -1302,85 +1339,63 @@ other class: .ui-slider-range */
   width: 100%;
 
   .map-help-panel__content {
-    margin: 0 24px;
+    margin: 0 1.5rem;
   }
 }
 
 .nav-help {
-  /* Temporary. Background can't be buttons-bkg because the hand image on the button is white with no outline. */
-  background-color: var(--portal-grey-4, var(--map-col-bkg-lighter__deprecate));
-  color: white;
-
-  border-radius: var(--map-border-radius);
+  color: var(--portal-grey-7);
 }
 
 .nav-help .map-view__button {
-  /* Temporary. Background can't be buttons-bkg because the hand image on the button is white with no outline. */
-  background-color: var(--portal-grey-4, var(--map-col-bkg-lighter__deprecate));
+  background-color: var(--portal-blue-1);
+  border-radius: .25rem;
   color: var(--map-col-text-label);
-
-  padding: 0.65rem 0.9rem;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 0.8);
+  margin-right: .5rem;
+  padding: 0.25rem 1rem;
 }
 
 .nav-help .map-view__button--active {
   /* Temporary. Background can't be buttons-bkg because the hand image on the button is white with no outline. */
-  background-color: var(--portal-grey-5, var(--map-col-bkg-lightest__deprecate));
+  background-color: var(--portal-blue-5);
   color: white;
-
-  opacity: var(--map-no-brightness-or-opacity-tweaks, 1);
 }
 
 .nav-help__img {
-  height: 48px;
-  width: 70px;
+  background: var(--portal-blue-2);
+  border-radius: .5rem;
+  height: 3rem;
+  padding: .5rem;
+  width: 3rem;
 }
 
 .nav-help__instructions {
+  border-top: 1px solid var(--portal-grey-3);
   display: grid;
+  margin: 1rem 0;
+  padding: 0;
   width: 100%;
-  gap: 0.8rem;
-  padding: 0.8rem 0.4rem;
-  /* Temporary. Background can't be buttons-bkg because the hand image on the button is white with no outline. */
-  background-color: var(--portal-grey-5, var(--map-col-bkg-lightest__deprecate));
-  color: white;
-
-  border-radius: var(--map-border-radius);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .nav-help__instructions.hidden {
   display: none;
 }
 
-.cesium-navigation-help-pan {
-  color: #66ccff;
-  font-weight: bold;
-}
-
-.cesium-navigation-help-zoom {
-  color: #65fd00;
-  font-weight: bold;
-}
-
-.cesium-navigation-help-rotate {
-  color: #ffd800;
-  font-weight: bold;
-}
-
+.cesium-navigation-help-pan,
+.cesium-navigation-help-zoom,
+.cesium-navigation-help-rotate,
 .cesium-navigation-help-tilt {
-  color: #d800d8;
-  font-weight: bold;
+  color: var(--portal-grey-8);
+  font-weight: 500;
 }
 
 .nav-help__instruction {
+  border-bottom: 1px solid var(--portal-grey-2);
   display: grid;
-  grid-template-columns: 70px auto;
-  gap: 0.5rem;
+  grid-template-columns: 3rem auto;
+  gap: 1rem;
   align-items: center;
+  padding: .5rem 0;
 }
 
 .map-help-panel__section:not(:first-child) {
@@ -1388,49 +1403,50 @@ other class: .ui-slider-range */
 }
 
 .viewfinder {
-  width: 100%;
-}
-
-.viewfinder__search-input {
-  margin: 0 24px;
-}
-
-.viewfinder-predictions {
-  list-style: none;
-  margin: -16px 24px 0 24px;
-
-  .viewfinder-prediction__content {
-    align-items: center;
-    background: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
-    border: 1px solid var(--map-col-border, white);
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: var(--map-col-text-highlight, var(--map-col-text-body));
-    cursor: pointer;
-    display: flex;
-    height: 48px;
-    justify-content: flex-start;
-    margin: 4px 0;
-    padding: 12px 8px;
-
-    >* {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    i {
-      flex-grow: 0;
-      min-width: 24px;
-      max-width: 24px;
-      text-align: center;
-    }
-
-    &:hover,
-    &.viewfinder-prediction__focused {
-      border-color: var(--portal-col-border-highlight);
-      background-color: var(--map-col-content-bkg-highlight, var(--map-col-bkg-lighter__deprecate));
+    width: 100%;
+  }
+  
+  .viewfinder__search-input {
+    margin: 0 1.5rem;
+  }
+  
+  .viewfinder-predictions {
+    list-style: none;
+    margin: -.5rem 1.5rem 0 1.5rem;
+  
+    .viewfinder-prediction__content {
+      align-items: center;
+      background: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
+      border: 1px solid var(--map-col-border, white);
+      border-radius: .25rem;
+      box-sizing: border-box;
+      color: var(--map-col-text-highlight, var(--map-col-text-body));
+      cursor: pointer;
+      display: flex;
+      gap: .5rem;
+      height: 3rem;
+      margin: 0 0 .5rem;
+      padding: .5rem 1rem;
+      transition: background-color .3s ease-in-out;
+  
+      >* {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+  
+      i {
+        display: contents;
+        font-size: 1.1rem;
+        height: 2rem;
+        width: 2rem;
+        text-align: center;
+      }
+  
+      &:hover,
+      &.viewfinder-prediction__focused {
+        border-color: var(--map-col-content-bkg-highlight);
+        background-color: var(--map-col-content-bkg-highlight);
+      }
     }
   }
-}
