@@ -145,6 +145,7 @@
   margin: 0;
   overflow: visible;
   text-transform: none;
+  appearance: button;
   -webkit-appearance: button;
   border: 0;
   border-radius: var(--map-border-radius);
@@ -261,17 +262,16 @@ ANIMATION
   height: 100%;
 }
 
-/* So the map widget is underneath the links/tabs on larger screens (the toolbar should 'squish' the map, not overlap it) */
+/* So the map widget is underneath the links/tabs on larger screens (the toolbar should 'squish' the map, not overlap it)
 @media only screen and (min-width: 768px) {
   .map-view__map-widget-container {
-    /*
     order: 1;
     position: relative;
     width: calc(100% + var(--map-toolbar-link-width) + (2* var(--map-size-toolbar-inter-link-margin)));
     margin-left: calc(-1 * var(--map-toolbar-link-width) - (2* var(--map-size-toolbar-inter-link-margin)));
-    */
   }
 }
+*/
 
 .map-view__scale-bar-container {
   position: absolute;
@@ -338,7 +338,9 @@ ANIMATION
  *
  */
 
+/*
 .cesium-widget-view {}
+*/
 
 .cesium-widget-view>.cesium-widget {
   width: 100%;
@@ -408,7 +410,7 @@ represents 1 unit of the given distance measurement. */
 
 /* The elements that contains the distance measurement */
 
-.scale-bar__distance {}
+/* .scale-bar__distance {} */
 
 /*****************************************************************************************
  *
@@ -1043,14 +1045,14 @@ represents 1 unit of the given distance measurement. */
   color: var(--map-col-text-muted);
 }
 
+/*
 .layer-info__links {
-  /*
   display: grid;
   grid-auto-flow: column;
   gap: 2rem;
   width: 100%;
-  */
 }
+*/
 
 .layer-info__link {
   border: 1px solid var(--map-col-border);

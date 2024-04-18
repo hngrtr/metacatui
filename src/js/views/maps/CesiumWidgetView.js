@@ -229,6 +229,8 @@ define([
           // component. See
           // https://cesium.com/blog/2018/01/24/cesium-scene-rendering-performance/#handling-simulation-time-changes.
           maximumRenderTimeChange: Infinity,
+          // Hide the stars so the loading isn't so jumpy
+          skyBox: false
         });
 
         // Save references to parts of  widget the view will access often

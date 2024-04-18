@@ -216,7 +216,7 @@ define([
           showToolbar: true,
           showLayerList: true,
           showHomeButton: true,
-          showViewfinder: false,
+          showViewfinder: true,
           toolbarOpen: false,
           showScaleBar: true,
           showFeatureInfo: true,
@@ -932,18 +932,19 @@ define([
               label: "Bing Satellite imagery",
               icon: "urn:uuid:ff153eab-490b-46a4-b11e-47e0592735f6",
               type: "IonImageryProvider",
+              visible: false,
               description: "Global satellite imagery down to 15cm resolution in urban areas. This satellite imagery is not what was used to produce the other data layers. Due to the license restrictions associated with the the satellite imagery used to produce the other data layers, we are not able to display it publicly.",
               attribution: "Data provided by Bing Maps &copy;2021 Microsoft Corporation",
               moreInfoLink: "https://www.microsoft.com/maps",
               cesiumOptions: {
                   ionAssetId: "2"
-              },
-              visible: false
+              }
             },
             {
               label: "OpenTopoMap",
               icon: "urn:uuid:ff153eab-490b-46a4-b11e-47e0592735f6",
               type: "OpenStreetMapImageryProvider",
+              visible: false,
               description: "OpenTopoMap is a free topographic map generated from OpenStreetMap and SRTM elevation data. The map style is based on the official maps and relies on good readability through high contrast and balanced signatures.",
               attribution: "Stefan Erhardt",
               moreInfoLink: "https://opentopomap.org/credits",
@@ -952,8 +953,7 @@ define([
               },
               opacity: 0.4,
               // Make the base map grayscale
-              saturation: 0.2,
-              visible: false
+              saturation: 0.1
             },
             {
               label: "OpenStreetMaps",
@@ -965,7 +965,7 @@ define([
               // No need to set cesiumOptions since the OSM URL is the default
               opacity: 0.6,
               // Make the base map grayscale
-              saturation: 0.2,
+              saturation: 0.1,
               visible: true
             }
           ],
