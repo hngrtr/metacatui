@@ -148,12 +148,21 @@ define(
         });
       },
 
+      flatMap(layerCategories) {
+        return layerCategories.getMapAssets().map(assets => assets.models).flat();
+      },
+
       selectZoomPreset(preset) {
-        const layers = this.mapModel.get('layers');
-        const enabledLayers = ['Base map', ...preset.get('enabledLayers')];
-        layers.each(layer => {
+        const mapLayers = this.mapModel.get('layers');
+
+        const layers = mapLayers ?? this.flatMap(this.mapModel.get('layerCategories'));
+        const enabledLayers = preset.get('enabledLayers');
+
+        console.log({ enabledLayers });
+        layers.forEach(layer => {
           // TODO(ianguerin): the layer id should be a unique, unchanging ID...
           const layerId = layer.get('label');
+          console.log(layerId);
           layer.set('visible', enabledLayers.includes(layerId));
         });
 

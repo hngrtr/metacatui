@@ -56,6 +56,7 @@ define(
       },
 
       select(event) {
+        console.log("hi mom");
         this.selectCallback();
 
         this.el.classList.add(CLASS_NAMES.active);

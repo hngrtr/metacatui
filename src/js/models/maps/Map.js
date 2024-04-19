@@ -247,7 +247,7 @@ define([
        * used instead (see {@link MapModel#defaults}).
        */
       initialize: function (config) {
-        
+
         config.layerCategories = [{
           label: "People",
           icon: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d='M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z'/></svg>",
@@ -261,7 +261,7 @@ define([
               attribution: "J. Cervenec and J. Moss (2022): Permafrost Tunnel Tour",
               icon: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 280'><path d='M482 1H18A17 17 0 0 0 1 17v246a17 17 0 0 0 17 16h173a17 17 0 0 0 15-8l28-48h32l28 48a17 17 0 0 0 15 8h173a17 17 0 0 0 17-16V17a17 17 0 0 0-17-16ZM132 204a72 72 0 1 1 0-144 72 72 0 0 1 0 144Zm236 0a72 72 0 1 1 0-144 72 72 0 0 1 0 144Z'/></svg>",
               colorPalette: {
-                colors: [{color: "#d1134c"}]
+                colors: [{ color: "#d1134c" }]
               },
               featureTemplate: {
                 template: "story",
@@ -280,7 +280,7 @@ define([
                     type: "Feature",
                     geometry: {
                       type: "Point",
-                      coordinates: [-147.6209142699301,64.951365829418]
+                      coordinates: [-147.6209142699301, 64.951365829418]
                     },
                     properties: {
                       label: "Permafrost Research Tunnel",
@@ -304,7 +304,7 @@ define([
               opacity: .75,
               // Single color
               colorPalette: {
-                colors: [{color: "#0087B5"}]
+                colors: [{ color: "#0087B5" }]
               },
               /*
               colorPalette: {
@@ -365,15 +365,15 @@ define([
               downloadLink: "https://arcticdata.io/catalog/view/urn%3Auuid%3Adbb766ba-cd68-49f6-af86-846646152e2e#urn%3Auuid%3Aed7718ae-fb0d-43dd-9270-fbfe80bfc7a4",
               attribution: "Local Environmental Observer (LEO) Network",
               icon: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='#fff' d='M12 0a12 12 0 1 1 0 24 12 12 0 0 1 0-24Zm6.3 8.3c-.5 0-1 0-1.5.3-.3 0-.6.3-.9.6a2 2 0 0 0-.6 1c-.3.4-.4 1-.4 1.8 0 1 .3 2 1 2.6.6.6 1.4 1 2.5 1 1 0 1.8-.4 2.4-1 .6-.7 1-1.5 1-2.7a4 4 0 0 0-1-2.7c-.6-.6-1.4-1-2.5-1ZM4 8.5H2.5v7h5v-1.3H3.8V8.5Zm9.9-.1H8.5v7H14v-1.2h-4v-1.9h3.6v-1.2H10V9.6h3.8V8.4Zm4.6 1c.5 0 1 .3 1.4.7.3.4.5 1 .5 1.8s-.2 1.4-.6 1.8c-.3.4-.8.6-1.3.6-.6 0-1-.2-1.5-.6-.3-.4-.5-1-.5-1.8s.2-1.4.5-1.8a2 2 0 0 1 1.5-.6Z'/></svg>",
-              notification: {badge: "NEW",style: "blue"},
+              notification: { badge: "NEW", style: "blue" },
               opacity: .75,
               colorPalette: {
                 paletteType: "continuous",
                 property: "population",
                 colors: [
-                  {color: "#C8C800", value:501},
-                  {color: "#969600", value:76000},
-                  {color: "#646400", value:10381221}
+                  { color: "#C8C800", value: 501 },
+                  { color: "#969600", value: 76000 },
+                  { color: "#646400", value: 10381221 }
                 ]
               },
               customProperties: {
@@ -407,18 +407,18 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A21J97929/bartsch_infrastructure/WorldCRS84Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.82421875,54.84375000000004,179.12109374999955,82.61718750000001]
+                rectangle: [-179.82421875, 54.84375000000004, 179.12109374999955, 82.61718750000001]
               },
               colorPalette: {
                 paletteType: "continuous",
                 property: "coverage",
                 colors: [
-                  {color: "#ecda9a", value: 0},
-                  {color: "#efc47e", value: 0.2},
-                  {color: "#f3ad6a", value: 0.4},
-                  {color: "#f7945d", value: 0.6},
-                  {color: "#f97b57", value: 0.8},
-                  {color: "#ee4d5a", value: 1}
+                  { color: "#ecda9a", value: 0 },
+                  { color: "#efc47e", value: 0.2 },
+                  { color: "#f3ad6a", value: 0.4 },
+                  { color: "#f7945d", value: 0.6 },
+                  { color: "#f97b57", value: 0.8 },
+                  { color: "#ee4d5a", value: 1 }
                 ]
               }
             }, {
@@ -429,19 +429,19 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A21J97929/SACHI_v2/infrastructure_code/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.82421875,54.84375000000004,179.12109374999955,82.61718750000001]
+                rectangle: [-179.82421875, 54.84375000000004, 179.12109374999955, 82.61718750000001]
               },
               colorPalette: {
                 paletteType: "categorical",
                 property: "DN",
                 colors: [
-                  {color: "#f48525", label: "Linear transport infrastructure (asphalt)", value: 11},
-                  {color: "#f4e625", label: "Linear transport infrastructure (gravel)", value: 12},
-                  {color: "#47f425", label: "Linear transport infrastructure (undefined)", value: 13},
-                  {color: "#25f4e2", label: "Buildings (and other constructions such as bridges)", value: 20},
-                  {color: "#2525f4", label: "Other impacted area (includes gravel pads, mining sites)", value: 30},
-                  {color: "#f425c3", label: "Airstrip", value: 40},
-                  {color: "#f42525", label: "Reservoir or other water body impacted by human activities", value: 50}
+                  { color: "#f48525", label: "Linear transport infrastructure (asphalt)", value: 11 },
+                  { color: "#f4e625", label: "Linear transport infrastructure (gravel)", value: 12 },
+                  { color: "#47f425", label: "Linear transport infrastructure (undefined)", value: 13 },
+                  { color: "#25f4e2", label: "Buildings (and other constructions such as bridges)", value: 20 },
+                  { color: "#2525f4", label: "Other impacted area (includes gravel pads, mining sites)", value: 30 },
+                  { color: "#f425c3", label: "Airstrip", value: 40 },
+                  { color: "#f42525", label: "Reservoir or other water body impacted by human activities", value: 50 }
                 ]
               }
             }, {
@@ -453,7 +453,7 @@ define([
               },
               colorPalette: {
                 paletteType: "categorical",
-                colors: [{color: "#ee4d5a"}]
+                colors: [{ color: "#ee4d5a" }]
               }
             },
           ]
@@ -471,20 +471,20 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A2KH0F12D/change_rate_dedup_1204/web_tiles/change_rate/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "change_rate",
                 colors: [
-                  {color: "#ff0000", value: -2},
-                  {color: "#FF8C00", value: -1.32},
-                  {color: "#FFA07A", value:-0.66},
-                  {color: "#FFFF00", value: 0},
-                  {color: "#66CDAA", value: 0.66},
-                  {color: "#AFEEEE", value: 1.32},
-                  {color: "#0000ff", value:2}
+                  { color: "#ff0000", value: -2 },
+                  { color: "#FF8C00", value: -1.32 },
+                  { color: "#FFA07A", value: -0.66 },
+                  { color: "#FFFF00", value: 0 },
+                  { color: "#66CDAA", value: 0.66 },
+                  { color: "#AFEEEE", value: 1.32 },
+                  { color: "#0000ff", value: 2 }
                 ]
               },
               notification: {
@@ -502,15 +502,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2017/web_tiles/permanent_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "permanent_water",
                 colors: [
-                  {color: "#1be3ee", value: 0},
-                  {color: "#1b22ee", value:120025}
+                  { color: "#1be3ee", value: 0 },
+                  { color: "#1b22ee", value: 120025 }
                 ]
               },
               notification: {
@@ -528,15 +528,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2017/web_tiles/seasonal_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "seasonal_water",
                 colors: [
-                  {color: "#f000d8", value: 0},
-                  {color: "#8b00cc", value: 7139}
+                  { color: "#f000d8", value: 0 },
+                  { color: "#8b00cc", value: 7139 }
                 ]
               },
               notification: {
@@ -554,15 +554,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2018/web_tiles/permanent_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "permanent_water",
                 colors: [
-                  {color: "#1be3ee", value: 0},
-                  {color: "#1b22ee", value:120054}
+                  { color: "#1be3ee", value: 0 },
+                  { color: "#1b22ee", value: 120054 }
                 ]
               },
               notification: {
@@ -580,15 +580,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2018/web_tiles/seasonal_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "seasonal_water",
                 colors: [
-                  {color: "#f000d8", value: 0},
-                  {color: "#8b00cc", value: 6255}
+                  { color: "#f000d8", value: 0 },
+                  { color: "#8b00cc", value: 6255 }
                 ]
               },
               notification: {
@@ -606,15 +606,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2019/web_tiles/permanent_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "permanent_water",
                 colors: [
-                  {color: "#1be3ee", value: 0},
-                  {color: "#1b22ee", value: 120046}
+                  { color: "#1be3ee", value: 0 },
+                  { color: "#1b22ee", value: 120046 }
                 ]
               },
               notification: {
@@ -632,15 +632,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2019/web_tiles/seasonal_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "seasonal_water",
                 colors: [
-                  {color: "#f000d8", value: 0},
-                  {color: "#8b00cc", value: 5968}
+                  { color: "#f000d8", value: 0 },
+                  { color: "#8b00cc", value: 5968 }
                 ]
               },
               notification: {
@@ -658,15 +658,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2020/web_tiles/permanent_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "permanent_water",
                 colors: [
-                  {color: "#1be3ee", value: 0},
-                  {color: "#1b22ee", value: 119980}
+                  { color: "#1be3ee", value: 0 },
+                  { color: "#1b22ee", value: 119980 }
                 ]
               },
               notification: {
@@ -684,15 +684,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2020/web_tiles/seasonal_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "seasonal_water",
                 colors: [
-                  {color: "#f000d8", value: 0},
-                  {color: "#8b00cc", value: 8766}
+                  { color: "#f000d8", value: 0 },
+                  { color: "#8b00cc", value: 8766 }
                 ]
               },
               notification: {
@@ -710,15 +710,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2021/web_tiles/permanent_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "permanent_water",
                 colors: [
-                  {color: "#1be3ee", value: 0},
-                  {color: "#1b22ee", value: 119884}
+                  { color: "#1be3ee", value: 0 },
+                  { color: "#1b22ee", value: 119884 }
                 ]
               },
               notification: {
@@ -736,15 +736,15 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A28G8FK10/yr2021/web_tiles/seasonal_water/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 1,
               colorPalette: {
                 paletteType: "continuous",
                 property: "seasonal_water",
                 colors: [
-                  {color: "#f000d8", value: 0},
-                  {color: "#8b00cc", value: 3463}
+                  { color: "#f000d8", value: 0 },
+                  { color: "#8b00cc", value: 3463 }
                 ]
               },
               notification: {
@@ -761,19 +761,19 @@ define([
               downloadLink: "https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2K35MF71#urn%3Auuid%3A15830bf6-1d20-405f-90c6-5011058fc8fd",
               id: "doi:10.18739/A2K35MF71",
               visible: false,
-              notification: {badge: "NEW", style: "blue"},
+              notification: { badge: "NEW", style: "blue" },
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A2K35MF71/urn:uuid:15830bf6-1d20-405f-90c6-5011058fc8fd/band_1/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-171.329107983504,66.16074244427435,-136.6488120854937,72.25092330368847]
+                rectangle: [-171.329107983504, 66.16074244427435, -136.6488120854937, 72.25092330368847]
               },
               colorPalette: {
                 paletteType: "categorical",
                 property: "DLB Classification",
                 colors: [
-                  {color: "#FC8D59", value: "No Drained Lake Basin"},
-                  {color: "#FFFFBF", value: "Ambiguous"},
-                  {color: "#91BFDB", value: "Drained Lake Basin"}
+                  { color: "#FC8D59", value: "No Drained Lake Basin" },
+                  { color: "#FFFFBF", value: "Ambiguous" },
+                  { color: "#91BFDB", value: "Drained Lake Basin" }
                 ]
               }
             }, {
@@ -783,24 +783,24 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A2037V/urn:uuid:ea99e31b-572a-4175-92d2-0a4a9cdd8366/band_1/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
-              notification: {badge: "NEW", style: "blue"},
+              notification: { badge: "NEW", style: "blue" },
               opacity: 0.9,
               colorPalette: {
                 paletteType: "continuous",
                 property: "Trend in average July SWI",
                 colors: [
-                  {color: "#872817", value: -0.0023},
-                  {color: "#cd4e03", value: -0.001788888888888889},
-                  {color: "#e98a1f", value: -0.0012777777777777779},
-                  {color: "#f7d054", value: -0.0007666666666666668},
-                  {color: "#fff29a", value: -0.00025555555555555574},
-                  {color: "#c1e8f2", value: 0.00025555555555555574},
-                  {color: "#81c4dc", value: 0.0007666666666666664},
-                  {color: "#4d9ccb", value: 0.0012777777777777779},
-                  {color: "#115ca3", value: 0.0017888888888888885},
-                  {color: "#052350", value: 0.0023}
+                  { color: "#872817", value: -0.0023 },
+                  { color: "#cd4e03", value: -0.001788888888888889 },
+                  { color: "#e98a1f", value: -0.0012777777777777779 },
+                  { color: "#f7d054", value: -0.0007666666666666668 },
+                  { color: "#fff29a", value: -0.00025555555555555574 },
+                  { color: "#c1e8f2", value: 0.00025555555555555574 },
+                  { color: "#81c4dc", value: 0.0007666666666666664 },
+                  { color: "#4d9ccb", value: 0.0012777777777777779 },
+                  { color: "#115ca3", value: 0.0017888888888888885 },
+                  { color: "#052350", value: 0.0023 }
                 ]
               },
               attribution: "Webb, Elizabeth E., Anna K. Liljedahl, Jada A. Cordeiro, Michael M. Loranty, Chandi Witharana, and Jeremy W. Lichstein (2022), Permafrost thaw drives surface water decline across lake-rich regions of the Arctic, Nature Climate Change, <a href='https://www.nature.com/articles/s41558-022-01455-w'>doi.org/10.1038/s41558-022-01455-w</a><br><br>Webb, Elizabeth E. (2022), Pan-Arctic surface water (yearly and trend over time) 2000-2021, Arctic Data Center, <a href='https://doi.org/doi:10.18739/A2037V'>doi:10.18739/A2037V</a>",
@@ -815,12 +815,12 @@ define([
               description: "This sub-meter resolution surface water layer was derived from the high spatial resolution commercial satellite imagery provided by the Polar Geospatial Center. This layer shows a sample of the data in North Slope, Alaska, USA.",
               attribution: "Kaiser S, Grosse G, Boike J, Langer M. Monitoring the Transformation of Arctic Landscapes: Automated Shoreline Change Detection of Lakes Using Very High Resolution Imagery. Remote Sensing. 2021; 13(14):2802. https://doi.org/10.3390/rs13142802",
               moreInfoLink: "https://doi.org/10.3390/rs13142802",
-              cesiumOptions: {ionAssetId: "634566"},
+              cesiumOptions: { ionAssetId: "634566" },
               colorPalette: {
                 paletteType: "categorical",
-                colors:[{color: "#33b1ff"}]
+                colors: [{ color: "#33b1ff" }]
               },
-              filters: [{filterType: "categorical", property: "DN", values:[0]}],
+              filters: [{ filterType: "categorical", property: "DN", values: [0] }],
               notification: {
                 badge: "Preview",
                 style: "yellow",
@@ -836,10 +836,10 @@ define([
               downloadLink: "https://apgc.awi.de/dataset?tags=Lakes&product=Permafrost+Region+Disturbance&tags=Landsat",
               attribution: "Nitze, Ingmar; Grosse, Guido; Jones, Benjamin M; Romanovsky, Vladimir E; Boike, Julia (2018): Remote sensing quantifies widespread abundance of permafrost region disturbances across the Arctic and Subarctic, Datasets. PANGAEA, https://doi.org/10.1594/PANGAEA.894755",
               id: "https://doi.org/10.1594/PANGAEA.922808",
-              cesiumOptions: {ionAssetId: "634564"},
+              cesiumOptions: { ionAssetId: "634564" },
               colorPalette: {
                 paletteType: "categorical",
-                colors:[{color: "#33b1ff"}]
+                colors: [{ color: "#33b1ff" }]
               },
               notification: {
                 badge: "Preview",
@@ -862,12 +862,12 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A2KW57K57/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               colorPalette: {
                 paletteType: "continuous",
                 property: "Percent area covered by polygons",
-                colors: [{color: "#f8ff1f"}]
+                colors: [{ color: "#f8ff1f" }]
               }
             }, {
               label: "Ice Wedge Polygons (low & medium ice regions)",
@@ -879,12 +879,12 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A24F1MK7Q/web_tiles/iwp_coverage/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               colorPalette: {
                 property: "Percent area covered by polygons",
                 paletteType: "continuous",
-                colors: [{color: "#f8ff1f"}]
+                colors: [{ color: "#f8ff1f" }]
               },
               notification: { badge: "NEW", style: "green" }
             }, {
@@ -897,20 +897,20 @@ define([
               cesiumOptions: {
                 url: "https://arcticdata.io/data/tiles/10.18739/A2MG7FX35/new/coverage_category/WGS1984Quad/{TileMatrix}/{TileCol}/{TileRow}.png",
                 tilingScheme: "GeographicTilingScheme",
-                rectangle: [-179.91531896747117,50.16996707215903,179.91531896747247,80.0978646943821]
+                rectangle: [-179.91531896747117, 50.16996707215903, 179.91531896747247, 80.0978646943821]
               },
               opacity: 0.4,
               colorPalette: {
                 property: "Permafrost and ice extent",
                 paletteType: "categorical",
                 colors: [
-                  {color: "#17c0d366", label: "Isolated patches", value: 1},
-                  {color: "#179bd366", label: "Sporadic", value: 2},
-                  {color: "#1775d366", label: "Discontinuous", value: 3},
-                  {color: "#154abc66", label: "Continuous", value: 4}
+                  { color: "#17c0d366", label: "Isolated patches", value: 1 },
+                  { color: "#179bd366", label: "Sporadic", value: 2 },
+                  { color: "#1775d366", label: "Discontinuous", value: 3 },
+                  { color: "#154abc66", label: "Continuous", value: 4 }
                 ]
               },
-              notification: {badge: "NEW", style: "green"}
+              notification: { badge: "NEW", style: "green" }
             }, {
               label: "Biophysical Permafrost Zones",
               icon: "urn:uuid:25d227f8-bc97-403f-a64d-5b76e741f31a",
@@ -921,18 +921,18 @@ define([
               moreInfoLink: "https://iopscience.iop.org/article/10.1088/1748-9326/ac20f3",
               downloadLink: "https://doi.org/10.11888/Geocry.tpdc.271659",
               attribution: "Y.Ran, Y.; M. Torre Jorgenson.; Li, X.; Jin, H.; Wu, T.; Li, R.; Cheng, G. (2021): A biophysical permafrost zonation map in the Northern Hemisphere (2000-2016). National Tibetan Plateau Data Center, https://doi.org/10.11888/Geocry.tpdc.271659",
-              cesiumOptions: {ionAssetId: "634560"},
+              cesiumOptions: { ionAssetId: "634560" },
               colorPalette: {
                 paletteType: "categorical",
                 property: "Type",
                 label: "Zone type",
                 colors: [
-                  {value: "Climate-driven",color: "#FF3720"},
-                  {value: "Climate-driven/ecosystem-modified",color: "#0370FE"},
-                  {value: "Climate-driven/ecosystem protected",color: "#BFD1FF"},
-                  {value: "Ecosystem-driven",color: "#4DE603"},
-                  {value: "Ecosystem-protected",color: "#267301"},
-                  {value:null,color: "#ffffff"}
+                  { value: "Climate-driven", color: "#FF3720" },
+                  { value: "Climate-driven/ecosystem-modified", color: "#0370FE" },
+                  { value: "Climate-driven/ecosystem protected", color: "#BFD1FF" },
+                  { value: "Ecosystem-driven", color: "#4DE603" },
+                  { value: "Ecosystem-protected", color: "#267301" },
+                  { value: null, color: "#ffffff" }
                 ]
               }
             },
@@ -950,7 +950,7 @@ define([
               attribution: "Data provided by Bing Maps &copy;2021 Microsoft Corporation",
               moreInfoLink: "https://www.microsoft.com/maps",
               cesiumOptions: {
-                  ionAssetId: "2"
+                ionAssetId: "2"
               }
             },
             {
@@ -1018,7 +1018,7 @@ define([
               .set('longitude', -166.49594395)
               .set('height', 5000),
             description: 'Report to LEO of ground sinking at historic mass burial site',
-            enabledLayers: ['Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
           }),
           new ZoomPresetModel({
             title: 'Golovin',
@@ -1027,7 +1027,7 @@ define([
               .set('longitude', -163.00985255)
               .set('height', 5000),
             description: 'Erosion at derelict fish processing plant and at old dump site are well documented by community members.',
-            enabledLayers: ['Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Local News Stories'],
           }),
           new ZoomPresetModel({
             title: 'Huslia',
@@ -1036,7 +1036,7 @@ define([
               .set('longitude', -156.387134)
               .set('height', 5000),
             description: 'Erosion reported by ANTHC personnel working on an infrastructure project in Huslia',
-            enabledLayers: ['Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Local News Stories'],
           }),
           new ZoomPresetModel({
             title: 'Kivalina',
@@ -1045,7 +1045,7 @@ define([
               .set('longitude', -164.52463932)
               .set('height', 5000),
             description: 'Community is moving inland. Even the evacuation road has had (likely) permafrost-related degradation.',
-            enabledLayers: ['Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
           }),
           new ZoomPresetModel({
             title: 'Kotzebue',
@@ -1054,7 +1054,7 @@ define([
               .set('longitude', -162.5112918)
               .set('height', 5000),
             description: 'Unusual sudden lake draining event, which was well-documented by community members and PDG scientists. Event is clearly visible via historical Google Earth imagery.',
-            enabledLayers: ['Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
           }),
         ]);
       },
