@@ -4,9 +4,11 @@
   /* COLOURS */
   --portal-blue-1: #ECF8FC;
   --portal-blue-2: #CCF0FC;
+  --portal-blue-2-50: rgba(200, 240, 252, .5);
   --portal-blue-3: #99E1FA;
   --portal-blue-4: #33C3F5;
   --portal-blue-5: #00A9E4;
+  --portal-blue-5-50: rgba(0, 169, 228, .5);
   --portal-blue-6: #0087B5;
   --portal-blue-7: #136682;
   --portal-blue-8: #002D3D;
@@ -85,14 +87,11 @@
 
   /* FONTS */
   --portal-body-font: Barlow;
-<<<<<<< HEAD
   --portal-attribution-font: Barlow;
   --portal-weight-regular: 400;
   --portal-weight-medium: 500;
   --portal-weight-semibold: 600;
   --portal-weight-bold: 700;
-=======
->>>>>>> nceas/feature-2275/fairbanks
 }
 
 body {

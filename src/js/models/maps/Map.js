@@ -293,7 +293,7 @@ define([
                 }
               }
             }, {
-              label: "Local News Stories",
+              label: "Local Stories",
               type: "GeoJsonDataSource",
               visible: false,
               description: "<b><a href='https://www.leonetwork.org/en/explore/posts?query=&mode=list&infotype=EVENT&region=&polygon=&bbox=&minlat=&maxlat=&near=&radius=&categories=PERMAFROST%7cPermafrost+Change&categories_anyOrAll=ALL&fromdate=&todate=' target='_blank'>Read the latest stories</a></b><br><br>The Local Environmental Observer (LEO) Network is a group of local observers and topic experts who share knowledge about unusual animal, environment, and weather events. This LEO Map is a collection of posts about time and location specific events related to permafrost. It is a living map, which means it is updated with new content from local observations or newspapers, as they are published into LEO Network.",
@@ -775,7 +775,8 @@ define([
                   { color: "#FFFFBF", value: "Ambiguous" },
                   { color: "#91BFDB", value: "Drained Lake Basin" }
                 ]
-              }
+              },
+              opacity: .6
             }, {
               type: "WebMapTileServiceImageryProvider",
               label: "Surface Water Index trend 2000-2021",
@@ -951,7 +952,10 @@ define([
               moreInfoLink: "https://www.microsoft.com/maps",
               cesiumOptions: {
                 ionAssetId: "2"
-              }
+              },
+              opacity: 0.6,
+              // Make the base map grayscale
+              saturation: 0.25
             },
             {
               label: "OpenTopoMap",
@@ -1014,20 +1018,20 @@ define([
           new ZoomPresetModel({
             title: 'Brevig Mission',
             geoPoint: new GeoPoint()
-              .set('latitude', 65.3381235)
-              .set('longitude', -166.49594395)
-              .set('height', 5000),
+              .set('latitude', 65.33144099720694)
+              .set('longitude', -166.48300287007706)
+              .set('height', 1500),
             description: 'Report to LEO of ground sinking at historic mass burial site',
-            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['Bing Satellite imagery', 'Permafrost Extent', 'Local Stories'],
           }),
           new ZoomPresetModel({
             title: 'Golovin',
             geoPoint: new GeoPoint()
-              .set('latitude', 64.56122491)
-              .set('longitude', -163.00985255)
-              .set('height', 5000),
+              .set('latitude', 64.5442236390748)
+              .set('longitude', -163.03229679467594)
+              .set('height', 10000),
             description: 'Erosion at derelict fish processing plant and at old dump site are well documented by community members.',
-            enabledLayers: ['OpenStreetMaps', 'Local News Stories'],
+            enabledLayers: ['OpenTopoMap', 'Local Stories'],
           }),
           new ZoomPresetModel({
             title: 'Huslia',
@@ -1036,7 +1040,7 @@ define([
               .set('longitude', -156.387134)
               .set('height', 5000),
             description: 'Erosion reported by ANTHC personnel working on an infrastructure project in Huslia',
-            enabledLayers: ['OpenStreetMaps', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Local Stories'],
           }),
           new ZoomPresetModel({
             title: 'Kivalina',
@@ -1045,7 +1049,7 @@ define([
               .set('longitude', -164.52463932)
               .set('height', 5000),
             description: 'Community is moving inland. Even the evacuation road has had (likely) permafrost-related degradation.',
-            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local Stories'],
           }),
           new ZoomPresetModel({
             title: 'Kotzebue',
@@ -1054,7 +1058,25 @@ define([
               .set('longitude', -162.5112918)
               .set('height', 5000),
             description: 'Unusual sudden lake draining event, which was well-documented by community members and PDG scientists. Event is clearly visible via historical Google Earth imagery.',
-            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local News Stories'],
+            enabledLayers: ['OpenStreetMaps', 'Ice-Wedge Polygons (high ice regions)', 'Local Stories'],
+          }),
+          new ZoomPresetModel({
+            title: 'MacKenzie Delta',
+            geoPoint: new GeoPoint()
+              .set('latitude', 68.83495712716915)
+              .set('longitude', -136.65759540212943)
+              .set('height', 300000),
+            description: 'Low-centered ice wedge polygons in the Big Lake Delta Plain of the outer Mackenzie Delta are unusual because their bounding ramparts appear to have a single ridge',
+            enabledLayers: ['OpenTopoMap', 'Ice-Wedge Polygons (high ice regions)', 'Local Stories'],
+          }),
+          new ZoomPresetModel({
+            title: 'Teshekpuk Lake',
+            geoPoint: new GeoPoint()
+              .set('latitude', 70.73207605337483)
+              .set('longitude', -153.89238150436773)
+              .set('height', 300000),
+            description: 'Add a description',
+            enabledLayers: ['OpenTopoMap', 'Drained Lake Basins, North Slope, 2014-2019', 'Local Stories'],
           }),
         ]);
       },

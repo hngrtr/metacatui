@@ -152,7 +152,7 @@ define(
           // TODO(ianguerin): delete this duplicate.
           {
             label: 'Viewfinder',
-            icon: 'search',
+            icon: 'globe',
             view: ViewfinderView,
             action(view, model) {
               const sectionEl = this;
@@ -171,8 +171,8 @@ define(
             },
           },
           {
-            label: 'Home',
-            icon: 'home',
+            label: 'Reset',
+            icon: 'rotate-left',
             action: function (view, model) {
               model.flyHome();
             },
@@ -187,18 +187,6 @@ define(
           //   view: DrawTool,
           //   viewOptions: {}
           // },
-          {
-            label: 'Viewfinder',
-            icon: 'search',
-            view: ViewfinderView,
-            action(view, model) {
-              const sectionEl = this;
-              view.defaultActivationAction(sectionEl);
-            },
-            isVisible(model) {
-              return MetacatUI.mapKey && model.get("showViewfinder");
-            },
-          },
           {
             label: 'Help',
             icon: 'question-sign',

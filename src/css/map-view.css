@@ -92,7 +92,7 @@
   --map-size-toolbar-inter-link-margin: 0.5rem;
   --map-border-radius-small: 0.25rem;
   --map-border-radius-big: 0.5rem;
-  --map-width-toolbar: 21rem;
+  --map-width-toolbar: 30rem;
   --map-toolbar-link-width: calc(var(--map-size-toolbar-link) + var(--map-size-toolbar-link-margin) + var(--map-size-toolbar-link-margin));
   /* SHADOWS */
   --map-shadow-md: var(--portal-shadow-md, 0 1px 9px -1px rgba(0, 0, 0, 0.2), 0 1px 2px 0px rgba(0, 0, 0, 0.5));
@@ -437,7 +437,7 @@ represents 1 unit of the given distance measurement. */
   flex-direction: column;
   height: min-content;
   background-color: var(--map-col-content-bkg-highlight);
-  border-radius: var(--map-border-radius);
+  border-radius: var(--map-border-radius-big);
   padding: .5rem;
   row-gap: .5rem;
   pointer-events: all;
@@ -448,7 +448,7 @@ represents 1 unit of the given distance measurement. */
 .toolbar__all-content {
   background-color: var(--map-col-content-bkg);
   width: var(--map-width-toolbar);
-  border-radius: var(--map-border-radius);
+  border-radius: var(--map-border-radius-big);
   box-shadow: var(--map-shadow-md);
   flex-direction: column;
   /* Don't display the content unless the toolbar is open. The outermost element, with
@@ -457,6 +457,7 @@ represents 1 unit of the given distance measurement. */
   display: none;
   overflow: hidden;
   pointer-events: all;
+  transition: height .3s ease-out;
 }
 
 .toolbar--open .toolbar__all-content {
@@ -494,11 +495,11 @@ represents 1 unit of the given distance measurement. */
   cursor: pointer;
   height: var(--map-size-toolbar-link);
   width: var(--map-size-toolbar-link);
-  margin: var(--map-size-toolbar-link-margin);
   border-radius: var(--map-border-radius-small);
   background-color: var(--map-col-content-bkg);
   padding: 0.5rem;
   position: relative;
+  transition: all .3s linear;
 }
 
 .toolbar__link:hover {
@@ -548,6 +549,7 @@ represents 1 unit of the given distance measurement. */
   font-size: 1.5rem;
   height: 1.5rem;
   line-height: 1;
+  text-align: center;
   width: 1.5rem;
 }
 
@@ -689,7 +691,7 @@ represents 1 unit of the given distance measurement. */
   width: 100%;
   height: min-content;
   border: solid var(--map-col-section-divider, var(--map-col-bkg-lightest__deprecate));
-  border-width: 1px 0;
+  border-width: 0 0 1px 0;
 }
 
 /* A layer-item is one item in the layer-list */
@@ -818,6 +820,7 @@ represents 1 unit of the given distance measurement. */
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-transform: capitalize;
   white-space: nowrap;
 }
 
@@ -918,7 +921,7 @@ represents 1 unit of the given distance measurement. */
 .layer-details {
   width: calc(var(--map-width-toolbar) * 1.5);
   background: var(--portal-blue-1);
-  border-radius: var(--map-border-radius);
+  border-radius: var(--map-border-radius-big);
   color: var(--map-col-text-body);
   box-shadow: var(--map-shadow-md);
   grid-template-columns: auto min-content;
@@ -1143,8 +1146,8 @@ other class: .ui-slider-range */
   padding: 1.5rem 1.5rem 0;
   background-color: var(--portal-blue-1);
   color: var(--map-col-text-body);
-  padding: 1rem 0.8rem 1rem 0.8rem;
-  row-gap: 0.8rem;
+  padding: 1.5rem 1.5rem 0;
+  row-gap: 0.5rem;
   border-radius: var(--map-border-radius-big);
   grid-template-columns: auto 2.5rem;
   grid-template-rows: min-content auto min-content;
@@ -1433,14 +1436,15 @@ other class: .ui-slider-range */
   .viewfinder-predictions {
     list-style: none;
     margin: -.5rem 1.5rem 0 1.5rem;
+    min-height: .5rem;
   
     .viewfinder-prediction__content {
       align-items: center;
-      background: var(--map-col-content-bkg, var(--map-col-bkg__deprecate));
-      border: 1px solid var(--map-col-border, white);
-      border-radius: .25rem;
+      background: var(--map-col-content-bkg);
+      border: 1px solid var(--map-col-border-muted, white);
+      border-radius: var(--map-border-radius-small);
       box-sizing: border-box;
-      color: var(--map-col-text-highlight, var(--map-col-text-body));
+      color: var(--map-col-text-highlight, white);
       cursor: pointer;
       display: flex;
       gap: .5rem;
@@ -1465,120 +1469,91 @@ other class: .ui-slider-range */
   
       &:hover,
       &.viewfinder-prediction__focused {
-        border-color: var(--map-col-content-bkg-highlight);
+        border-color: var(--map-col-border-highlight);
         background-color: var(--map-col-content-bkg-highlight);
       }
     }
   }
-
-  .expansion-panel {
-    border: solid var(--map-col-item-divider, var(--map-col-bkg-lightest__deprecate));
-    border-width: 1px 0;
-    color: var(--map-col-text-highlight, white);
-    padding: .25rem .5rem;
-    font-size: 1rem;
   
-    &.show-content {
-      .expansion-panel__content {
-        display: block;
-      }
-  
-      .icon-caret-down {
-        display: block;
-      }
-  
-      .icon-caret-up {
-      display: none;
-      }
-    }
-  
-    .icon-caret-down {
-      display: none;
-    }
-  
-    .icon-caret-up {
-      display: block;
-    }
-  
-    .expansion-panel__title {
-      user-select: none;
-      flex: 1;
-    }
-  
-    .expansion-panel__content {
-      display: none;
-      padding: .25rem 0;
-    }
-    
-    .expansion-panel__icon {
-      align-items: center;
-      display: flex;
-      font-size: 1.2rem;
-    }
-  
-    .expansion-panel__toggle {
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      column-gap: 16px;
-      padding: 0 24px;
-      height:40px;
-      align-items: center;
-    } 
-  }
-
   .viewfinder-zoom-presets {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
-    row-gap: .25rem;
+    margin-bottom: 0.25rem;
+    padding: 0 0.5rem 0 1.5rem;
+    row-gap: 0.5rem;
   
     .viewfinder-zoom-preset__preset {
-      border-radius: var(--map-border-radius-small);
-      border: 1px solid var(--map-col-section-divider, var(--map-col-bkg-lightest__deprecate));
+      border-radius: var(--map-border-radius-big);
+      border: 1px solid var(--portal-col-border-panel);
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      padding: .5rem;
-      row-gap: .5rem;
+      padding: 1rem 1.5rem 1.5rem 2.5rem;
+      row-gap: 0.5rem;
   
       &:hover {
-        background-color: var(--map-col-bkg-lightest);
+        background-color: var(--portal-blue-1);
+        border-color: var(--portal-blue-1);
+        transition: all .3s linear;
+
+        .viewfinder-zoom-preset__layer {
+          background: var(--portal-blue-2);
+          color: var(--portal-blue-6);
+
+          .viewfinder-zoom-preset__layer-content i {
+            color: var(--portal-blue-6);
+          }
+
+        }
+
+        .viewfinder-zoom-preset__title {
+          color: var(--portal-blue-7);
+        }
+
+        .viewfinder-zoom-preset__description {
+          color: var(--portal-blue-7);
+        }
       }
   
       .viewfinder-zoom-preset__title {
-        font-weight: bold;
+        color: var(--portal-blue-6);
+        font-weight: 600;
       }
   
       .viewfinder-zoom-preset__description {
-        color: var(--map-col-text-body, var(--map-col-text));
+        font-size: .85rem;
+        margin-bottom: 0.5rem;
       }
   
       .viewfinder-zoom-preset__layers {
-        column-gap: 4px;
+        column-gap: 0.25rem;
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;
-        row-gap: 4px; 
+        row-gap: 0.25rem; 
       }
   
       .viewfinder-zoom-preset__layer {
         align-items: center;
-        background: var(--map-col-bkg-lighter);
-        border-radius: 4px;
+        background: var(--portal-grey-1);
+        border-radius: var(--map-border-radius-big);
+        color: var(--portal-grey-5);
         display: flex;
-        height: 24px;
+        font-size: 0.8rem;
         justify-content: center;
-        max-width: 200px;
+        max-width: 13rem;
         overflow: hidden;
-        padding: 0 16px 0 8px;
+        padding: 0 1rem 0 0.5rem;
+        transition: background .3s linear;
   
         .viewfinder-zoom-preset__layer-content {
           overflow: hidden;
           text-overflow: ellipsis;
+          text-transform: capitalize;
           text-wrap: nowrap;
           
           i {
+            color: var(--portal-blue-5);
             padding-right: 4px;
           }
         }
@@ -1586,11 +1561,61 @@ other class: .ui-slider-range */
     }
   
     .viewfinder-zoom-preset.viewfinder-zoom-preset--active .viewfinder-zoom-preset__preset {
-      background-color: var(--portal-col-buttons-bkg-highlight, var(--map-col-bkg-lighter__deprecate));
-      color: white;
+      background-color: var(--portal-col-buttons-bkg-highlight);
+      color: var(--portal-blue-1);
   
+      .viewfinder-zoom-preset__title,
       .viewfinder-zoom-preset__description {
-        color: white;
+        color: var(--portal-blue-1);
+      }
+      
+      .viewfinder-zoom-preset__layer {
+        background-color: var(--portal-blue-5-50);
+        color: var(--portal-blue-2);
+
+        i {
+          color: var(--portal-blue-4);
+        }
       }
     }
   }
+  
+  /** START - Expansion panel View. */
+  .expansion-panel {
+    border: solid var(--map-col-item-divider, var(--map-col-bkg-lightest__deprecate));
+    border-width: 1px 0;
+    color: var(--portal-grey-7);
+    font-size: 1rem;
+    max-height: calc(100vh - 14rem);
+    overflow-y: auto;
+    
+  .expansion-panel__title {
+    user-select: none;
+    flex: 1;
+    font-weight: 500;
+    color: var(--map-col-text-highlight, var(--map-col-highlight__deprecate));
+  }
+
+  .expansion-panel__content {
+    padding: .25rem 0;
+  }
+  
+  .expansion-panel__icon {
+    fill: var(--map-col-text-highlight, var(--map-col-highlight__deprecate));
+    color: var(--map-col-text-highlight, var(--map-col-highlight__deprecate));
+    height: 2rem;
+    width: 2rem;
+    margin: 0.25rem;
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .expansion-panel__toggle {
+    display: grid;
+    padding: 0 1.5rem;
+    align-items: center;
+    grid-template-columns: min-content auto;
+  }
+  /** END - Expansion panel View. */
