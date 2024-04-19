@@ -28,6 +28,7 @@
   --portal-col-buttons-bkg-hover: var(--portal-blue-2);
   --portal-col-buttons-bkg-highlight: var(--portal-blue-6);
   --portal-col-buttons-bkg-muted: var(--portal-grey-1);
+  --portal-col-buttons-bkg-white-content-contrast: var(--portal-grey-5);
   --portal-col-buttons-text: var(--portal-blue-6);
   --portal-col-buttons-text-highlight: white;
   --portal-col-buttons-icon: var(--portal-blue-6);
@@ -37,8 +38,12 @@
 
   --portal-col-border: var(--portal-blue-2);
   --portal-col-border-highlight: unset;
+  --portal-col-border-panel: var(--portal-grey-3);
   --portal-col-border-muted: var(--portal-grey-4);
   --portal-col-border-highlight-search-box: var(--portal-blue-3);
+
+  --portal-col-section-divider: var(--portal-grey-3);
+  --portal-col-item-divider: var(--portal-grey-2);
 
   --portal-col-text-body: var(--portal-grey-8);
   --portal-col-text-highlight: var(--portal-blue-6);
@@ -49,6 +54,7 @@
 
   --portal-col-opacity-slider-active: var(--portal-blue-5);
   --portal-col-opacity-slider-inactive: var(--portal-grey-3);
+
 
   --portal-col-input-error-bkg: #FFFCF4;
   --portal-col-input-error-border: #FFDDAA;
@@ -79,11 +85,14 @@
 
   /* FONTS */
   --portal-body-font: Barlow;
+<<<<<<< HEAD
   --portal-attribution-font: Barlow;
   --portal-weight-regular: 400;
   --portal-weight-medium: 500;
   --portal-weight-semibold: 600;
   --portal-weight-bold: 700;
+=======
+>>>>>>> nceas/feature-2275/fairbanks
 }
 
 body {

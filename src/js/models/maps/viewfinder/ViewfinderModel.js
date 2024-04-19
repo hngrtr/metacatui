@@ -6,7 +6,8 @@ define(
     'backbone',
     'cesium',
     'models/geocoder/GeocoderSearch',
-    'models/maps/GeoPoint'],
+    'models/maps/GeoPoint'
+  ],
   (_, Backbone, Cesium, GeocoderSearch, GeoPoint) => {
     const EMAIL = MetacatUI.appModel.get('emailContact');
     const NO_RESULTS_MESSAGE = 'No search results found, try using another place name.';
@@ -48,6 +49,9 @@ define(
       initialize({ mapModel }) {
         this.geocoderSearch = new GeocoderSearch();
         this.mapModel = mapModel;
+
+        // TODO(ianguerin): this should be converting the xml into the model that I'm interested in.
+        this.set('zoomPresets', mapModel.get('zoomPresets'));
       },
 
       /** 
@@ -65,6 +69,10 @@ define(
           this.set({ predictions: [], query: '', focusIndex: -1, });
           return;
         }
+
+        // Unset error so the error will fire a change event even if it is the
+        // same error as already exists.
+        this.unset('error', { silent: true });
 
         try {
           // User is looking for autocompletions.
@@ -140,6 +148,18 @@ define(
         });
       },
 
+      selectZoomPreset(preset) {
+        const layers = this.mapModel.get('layers');
+        const enabledLayers = ['Base map', ...preset.get('enabledLayers')];
+        layers.each(layer => {
+          // TODO(ianguerin): the layer id should be a unique, unchanging ID...
+          const layerId = layer.get('label');
+          layer.set('visible', enabledLayers.includes(layerId));
+        });
+
+        this.mapModel.zoomTo(preset.get('geoPoint'));
+      },
+
       /**
        * Select a prediction from the list of predictions and navigate there.
        * @param {Prediction} prediction is the user-selected Prediction that
@@ -181,6 +201,10 @@ define(
           this.selectPrediction(this.get('predictions')[focusedIndex]);
           return;
         }
+
+        // Unset error so the error will fire a change event even if it is the
+        // same error as already exists.
+        this.unset('error', { silent: true });
 
         try {
           const geoPoint = new GeoPoint(value, { parse: true });

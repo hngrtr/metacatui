@@ -148,6 +148,10 @@ define([
      */
     onKeydown(event) {
       this.keydownCallback(event);
+
+      if (this.getInputValue() === "") {
+        this.clearError();
+      }
     },
 
     /**
@@ -194,12 +198,23 @@ define([
       this.getInputField().addClass(CLASS_NAMES.errorInput);
       const errorTextEl = this.getError();
       if (errorText) {
+        this.getInputField().addClass(CLASS_NAMES.errorInput);
+        const errorTextEl = this.getError();
         errorTextEl.html(errorText);
         errorTextEl.show();
       } else {
-        errorTextEl.html('');
-        errorTextEl.hide();
+        this.clearError();
       }
+    },
+
+    /**
+     * Clear error text, remove error styling and hide the error element.
+     */
+    clearError() {
+      this.getInputField().removeClass(CLASS_NAMES.errorInput);
+      const errorTextEl = this.getError();
+      errorTextEl.hide();
+      errorTextEl.html('');
     },
 
     /**
